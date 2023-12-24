@@ -160,9 +160,9 @@ td.e-rowcell .statustxt.e-inactivecolor {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #ffa600;
 }
-  
-  .search-input {
-    padding: 10px;
-    font-size: 14px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  }
+
+.search-input {
+  padding: 5px 0px 5px 5px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
