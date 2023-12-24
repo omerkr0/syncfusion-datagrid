@@ -12,12 +12,12 @@ import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import { TextBoxComponent } from "@syncfusion/ej2-react-inputs";
 import { DataManager, Query, UrlAdaptor } from "@syncfusion/ej2-data";
 import { closest, isNullOrUndefined } from "@syncfusion/ej2-base";
-import StatusComponent from "./StatusComponent";
-import CustomRatingComponent from "./RatingComponent";
-import ProgressComponent from "./ProgressComponent";
-import TrustComponent from "./TrustComponent";
-import EmpTemplateComponent from "./EmpTemplateComponent";
-import ColTemplateComponent from "./ColTemplateComponent";
+import StatusComponent from "./Status";
+import CustomRatingComponent from "./Rating";
+import ProgressComponent from "./Progress";
+import TrustComponent from "./Trust";
+import EmpTemplateComponent from "./EmpTemplate";
+import ColTemplateComponent from "./ColTemplate";
 import "../App.css";
 
 const OverView = () => {
