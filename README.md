@@ -1,8 +1,33 @@
-# React + Vite
+# Syncfusion React Grid Employee List Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is an application that displays a list of employees using Syncfusion's React Grid component.
 
-Currently, two official plugins are available:
+## Used technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js
+
+- Syncfusion
+
+- Vite
+
+## Setup
+
+Install the required packages:
+
+``` bash
+npm  install
+```
+## Run the project
+
+You can start the application by running the following command in the project directory:
+
+``` bash
+npm  run dev
+```
+
+## Features
+- You can search between employees with the search bar
+- You can filter with dropdown menu
+
+### Data Grid
+![datagrid](https://github.com/omerkr0/syncfusion-datagrid/assets/90520911/385bacc8-3649-4ea3-b851-ad38edc10def)
