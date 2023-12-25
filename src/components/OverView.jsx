@@ -1,3 +1,4 @@
+// Import necessary components from the Syncfusion library
 import { useRef } from "react";
 import {
   GridComponent,
@@ -20,24 +21,32 @@ import EmpTemplateComponent from "./EmpTemplate";
 import ColTemplateComponent from "./ColTemplate";
 import "../App.css";
 
+// Functional component for displaying an overview grid
 const OverView = () => {
-  const ddObj = useRef(null);
-  const gridInstance = useRef(null);
-  const searchBox = useRef(null);
+  // Refs for accessing and interacting with specific components
+  const ddObj = useRef(null); // Drop-down component
+  const gridInstance = useRef(null); // Grid component
+  const searchBox = useRef(null); // Textbox component for search
+
+  // Reference for clearing interval during data binding
   const clrIntervalFun2 = useRef(null);
 
+  // Data for drop-down list
   const ddlData = [
     { text: "1,000 Rows and 11 Columns", value: "1000" },
     { text: "10,000 Rows and 11 Columns", value: "10000" },
     { text: "1,00,000 Rows and 11 Columns", value: "100000" },
   ];
 
+  // Fields configuration for drop-down
   const fields = { text: "text", value: "value" };
 
+  // Callback function when data is bound to the grid
   const onDataBound = () => {
     clearTimeout(clrIntervalFun2.current);
   };
 
+  // Callback function when an action is completed
   const onComplete = (args) => {
     if (args.requestType === "filterchoicerequest") {
       const { field } = args.filterModel.options;
@@ -57,13 +66,19 @@ const OverView = () => {
     }
   };
 
+  // Base URL for data retrieval
   const hostUrl = "https://services.syncfusion.com/react/production/";
+
+  // Data manager with URL adapter for remote data binding
   const data = new DataManager({
     url: hostUrl + "api/UrlDataSource",
     adaptor: new UrlAdaptor(),
   });
+
+  // Query to retrieve data with a specified data count
   const query = new Query().addParams("dataCount", "1000");
 
+  // Callback function when the drop-down selection changes
   const onChange = () => {
     ddObj.current.hidePopup();
 
@@ -92,40 +107,49 @@ const OverView = () => {
     }, 100);
   };
 
+  // Configuration for checkbox in the grid
   const check = { type: "CheckBox" };
 
+  // Configuration for grid selection
   const select = {
     persistSelection: true,
     type: "Multiple",
     checkboxOnly: true,
   };
 
+  // Configuration for grid filtering
   const gridFilter = { type: "Menu" };
 
+  // Configuration for status column in the grid
   const status = {
     type: "CheckBox",
     itemTemplate: StatusComponent,
   };
 
+  // Configuration for trust column in the grid
   const trust = {
     type: "CheckBox",
     itemTemplate: TrustComponent,
   };
 
+  // Configuration for rating column in the grid
   const rating = {
     type: "CheckBox",
     itemTemplate: CustomRatingComponent,
   };
 
+  // Callback function for search
   const oneSearch = (args) => {
     const searchString = args.value;
     gridInstance.current.search(searchString);
   };
 
+  // JSX structure for the component
   return (
     <div className="control-pane">
       <div className="control-section">
         <div style={{ paddingBottom: "18px" }}>
+          {/* Textbox for search */}
           <TextBoxComponent
             ref={searchBox}
             placeholder="Name or Role Search"
@@ -133,6 +157,7 @@ const OverView = () => {
             showClearButton={true}
             cssClass="search-input"
           />
+          {/* Drop-down for selecting data range */}
           <DropDownListComponent
             id="games"
             width="220"
@@ -146,6 +171,7 @@ const OverView = () => {
           />
           <br />
         </div>
+        {/* Grid component */}
         <GridComponent
           id="overviewgrid"
           dataSource={data}
@@ -164,7 +190,9 @@ const OverView = () => {
           selectionSettings={select}
           enableHeaderFocus={true}
         >
+          {/* Columns configuration */}
           <ColumnsDirective>
+            {/* Checkbox column */}
             <ColumnDirective
               type="checkbox"
               allowSorting={false}
@@ -172,6 +200,7 @@ const OverView = () => {
               width="60"
               filter={check}
             ></ColumnDirective>
+            {/* Employee ID column */}
             <ColumnDirective
               field="EmployeeID"
               visible={false}
@@ -179,6 +208,7 @@ const OverView = () => {
               isPrimaryKey={true}
               width="130"
             ></ColumnDirective>
+            {/* Employee Name column */}
             <ColumnDirective
               field="Employees"
               headerText="Employee Name"
@@ -186,23 +216,27 @@ const OverView = () => {
               clipMode="EllipsisWithTooltip"
               template={EmpTemplateComponent}
             ></ColumnDirective>
+            {/* Role column */}
             <ColumnDirective
               field="Designation"
               headerText="Role"
               width="170"
               clipMode="EllipsisWithTooltip"
             ></ColumnDirective>
+            {/* Mail column */}
             <ColumnDirective
               field="Mail"
               headerText="Mail"
               width="230"
             ></ColumnDirective>
+            {/* Location column */}
             <ColumnDirective
               field="Location"
               headerText="Location"
               width="140"
               template={ColTemplateComponent}
             ></ColumnDirective>
+            {/* Status column */}
             <ColumnDirective
               field="Status"
               headerText="Status"
@@ -210,6 +244,7 @@ const OverView = () => {
               width="130"
               filter={status}
             ></ColumnDirective>
+            {/* Trustworthiness column */}
             <ColumnDirective
               field="Trustworthiness"
               headerText="Trustworthiness"
@@ -217,6 +252,7 @@ const OverView = () => {
               width="160"
               filter={trust}
             ></ColumnDirective>
+            {/* Rating column */}
             <ColumnDirective
               field="Rating"
               headerText="Rating"
@@ -224,6 +260,7 @@ const OverView = () => {
               width="220"
               filter={rating}
             ></ColumnDirective>
+            {/* Software Proficiency column */}
             <ColumnDirective
               field="Software"
               allowFiltering={false}
@@ -233,12 +270,14 @@ const OverView = () => {
               template={ProgressComponent}
               format="C2"
             ></ColumnDirective>
+            {/* Current Salary column */}
             <ColumnDirective
               field="CurrentSalary"
               headerText="Current Salary"
               width="160"
               format="C2"
             ></ColumnDirective>
+            {/* Address column */}
             <ColumnDirective
               field="Address"
               headerText="Address"
@@ -246,6 +285,7 @@ const OverView = () => {
               clipMode="EllipsisWithTooltip"
             ></ColumnDirective>
           </ColumnsDirective>
+          {/* Injected services for grid functionality */}
           <Inject services={[Filter, VirtualScroll, Sort]} />
         </GridComponent>
       </div>
@@ -253,4 +293,5 @@ const OverView = () => {
   );
 };
 
+// Export the component for use in other parts of the application
 export default OverView;
