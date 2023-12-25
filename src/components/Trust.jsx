@@ -3,7 +3,7 @@
 const TrustComponent = (props) => {
     const Trustworthiness = props.Trustworthiness === "Select All"
       ? null
-      : `src/assets/images/${props.Trustworthiness}.png`;
+      : `public/assets/images/${props.Trustworthiness}.png`;
   
     return (
       <div>
